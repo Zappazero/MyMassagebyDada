@@ -32,12 +32,14 @@ export default function PayPalCheckout({ amount, description, onSuccess, onClose
         <PayPalScriptProvider options={{
           clientId: import.meta.env.VITE_PAYPAL_CLIENT_ID,
           currency: 'EUR',
-          locale: 'de_DE'
+          locale: 'de_DE',
+          intent: 'capture'
         }}>
           <PayPalButtons
             style={{ layout: 'vertical', shape: 'rect', label: 'pay' }}
             createOrder={(data, actions) => actions.order.create({
-              purchase_units: [{ amount: { value: String(amount), currency_code: 'EUR' }, description }]
+              intent: 'CAPTURE',
+              purchase_units: [{ amount: { value: amount.toFixed(2), currency_code: 'EUR' }, description }]
             })}
             onApprove={(data, actions) => actions.order.capture().then(() => onSuccess())}
             onError={() => setError('Zahlung fehlgeschlagen. Bitte versuche es erneut.')}
