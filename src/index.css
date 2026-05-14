@@ -24,8 +24,6 @@ img { max-width: 100%; display: block; }
 .page-title    { font-size: clamp(30px, 5vw, 42px); }
 
 @media (max-width: 640px) {
-  .studio-photo { min-height: 220px !important; height: 220px !important; }
-  .product-image { height: 200px !important; }
   .staff-card { min-width: unset !important; max-width: 100% !important; width: 100%; }
   .booking-grid { grid-template-columns: 1fr !important; }
 }

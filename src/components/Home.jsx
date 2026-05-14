@@ -159,34 +159,25 @@ export default function Home({ onBook }) {
       {/* Studio */}
       <div className="px-6 py-20 max-w-5xl mx-auto">
         <p style={{ color: '#4e9e7e', fontSize: 12, letterSpacing: 4, textAlign: 'center' }} className="uppercase mb-2">Einblick</p>
-        <h2 style={{ textAlign: 'center', display: 'block', marginBottom: 48 }} className="section-title" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#1e4034' }}>
+        <h2 className="section-title" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#1e4034', textAlign: 'center', display: 'block', marginBottom: 48 }}>
           Das Studio
         </h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'stretch', justifyContent: 'center' }}>
           {/* Left: entrance */}
-          <div className="studio-photo" style={{ flex: '1 1 260px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', minHeight: 400 }}>
-            <img
-              src="/images/studio/eingang.jpeg"
-              alt="Eingang"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-            />
+          <div style={{ flex: '1 1 260px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', aspectRatio: '4/3' }}>
+            <img src="/images/studio/eingang.jpeg" alt="Eingang"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
           </div>
           {/* Middle: corridor */}
-          <div className="studio-photo" style={{ flex: '1 1 260px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', minHeight: 400 }}>
-            <img
-              src="/images/studio/korridor.jpeg"
-              alt="Korridor"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-            />
+          <div style={{ flex: '1 1 260px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', aspectRatio: '4/3' }}>
+            <img src="/images/studio/korridor.jpeg" alt="Korridor"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
           </div>
           {/* Right: massage room + text */}
           <div style={{ flex: '1 1 260px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div className="studio-photo" style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', flex: 1, minHeight: 220 }}>
-              <img
-                src="/images/studio/massageraum.jpeg"
-                alt="Massageraum"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
-              />
+            <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', aspectRatio: '4/3' }}>
+              <img src="/images/studio/massageraum.jpeg" alt="Massageraum"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
             </div>
             <div style={{ background: '#f0f7f3', borderRadius: 20, padding: '24px' }}>
               <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 26, color: '#1e4034', lineHeight: 1.3, marginBottom: 10 }}>
@@ -213,9 +204,9 @@ export default function Home({ onBook }) {
           {PRODUCTS.map(p => (
             <div key={p.name} style={{ background: '#fff', border: '1px solid #e8d5a0', borderRadius: 20, maxWidth: 380, width: '100%', display: 'flex', flexDirection: 'column' }} className="overflow-hidden shadow-sm hover:shadow-md transition">
               {/* Image */}
-              <div className="product-image" style={{ height: 260, background: p.imageBg, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+              <div style={{ aspectRatio: '4/3', background: p.imageBg, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
                 {p.image ? (
-                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8px' }} />
                 ) : (
                   <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: 64 }}>{p.icon}</span>
