@@ -33,7 +33,7 @@ const PRODUCTS = [
 ]
 
 const STAFF = [
-  { name: 'Dada', role: 'Inhaberin & Massagetherapeutin', exp: '', spec: '', photo: '/images/team/dada.jpg', photoPosition: 'center' },
+  { name: 'Dada', role: 'Inhaberin & Massagetherapeutin', exp: '', spec: '', photo: '/images/team/dada.jpg', photoPosition: '30% center' },
   { name: 'Caro', role: 'Massagetherapeutin', exp: '', spec: '' },
 ]
 
@@ -73,13 +73,6 @@ export default function Home({ onBook }) {
           <p style={{ color: '#d4ede3', fontFamily: 'Jost', fontSize: 'clamp(14px, 2vw, 17px)', maxWidth: 480, textAlign: 'center' }} className="mb-8 leading-relaxed">
             Dein persönliches Massagestudio im mittleren Wiedtal. Lass dich fallen — wir kümmern uns um den Rest.
           </p>
-          <button
-            onClick={onBook}
-            style={{ background: '#f2e2c4', color: '#2d6450', fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(17px, 2.5vw, 20px)' }}
-            className="px-8 py-3 md:px-10 md:py-4 rounded-full hover:opacity-90 transition shadow-lg"
-          >
-            Jetzt Termin buchen
-          </button>
         </div>
       </div>
 
