@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 const SERVICES = [
-  { name: 'Klassische Massage', duration: '60 Min', price: '75€' },
-  { name: 'Hot Stone Massage', duration: '90 Min', price: '110€' },
-  { name: 'Aromatherapie', duration: '60 Min', price: '85€' },
-  { name: 'Sportmassage', duration: '45 Min', price: '65€' },
-  { name: 'Rückenmassage', duration: '30 Min', price: '45€' },
-  { name: 'Ganzkörper Wellness', duration: '120 Min', price: '150€' },
+  { name: 'Atempause', duration: '30 Min', price: '40€' },
+  { name: 'Teilkörpermassage', duration: '45 Min', price: '55€' },
+  { name: 'Ganzkörpermassage', duration: '60 Min', price: '70€' },
+  { name: 'Intensiv-Auszeit', duration: '90 Min', price: '95€' },
+  { name: 'Kopf-, Gesichts- & Dekolleté-Massage', duration: '30 Min', price: '40€' },
+  { name: 'Fußmassage mit Fußbad', duration: '45 Min', price: '50€' },
 ]
 
 const STAFF = ['Dada', 'Caro', 'Keine Präferenz']
@@ -36,7 +36,7 @@ export default function Booking({ onNext, onBack }) {
   const valid = service && therapist && date && time
 
   return (
-    <div className="min-h-screen" style={{ background: '#fdfaf5' }}>
+    <div className="min-h-screen" style={{ background: '#fdfaf5', width: '100%' }}>
       {/* Header */}
       <div style={{ background: '#2d6450' }} className="px-6 py-4 flex items-center gap-4">
         <button onClick={onBack} style={{ color: '#a8d5be', fontSize: 22 }}>←</button>
@@ -46,14 +46,14 @@ export default function Booking({ onNext, onBack }) {
       </div>
 
       <div className="max-w-2xl mx-auto px-6 py-12">
-        <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 42, color: '#1e4034' }} className="mb-2">
+        <h1 className="page-title mb-2" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#1e4034' }}>
           Termin buchen
         </h1>
         <p style={{ color: '#6b8f7e', fontSize: 15 }} className="mb-10">Wähle deine gewünschte Massage und einen Termin.</p>
 
         {/* Service */}
         <Section label="1. Behandlung auswählen">
-          <div className="grid gap-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))' }}>
+          <div className="grid gap-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(240px, 100%), 1fr))' }}>
             {SERVICES.map(s => (
               <button
                 key={s.name}

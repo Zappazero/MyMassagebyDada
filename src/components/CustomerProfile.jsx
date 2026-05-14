@@ -26,7 +26,7 @@ export default function CustomerProfile({ booking, onNext, onBack }) {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#fdfaf5' }}>
+    <div className="min-h-screen" style={{ background: '#fdfaf5', width: '100%' }}>
       <div style={{ background: '#2d6450' }} className="px-6 py-4 flex items-center gap-4">
         <button onClick={onBack} style={{ color: '#a8d5be', fontSize: 22 }}>←</button>
         <span style={{ fontFamily: 'Cormorant Garamond, serif', color: '#f2e2c4', fontSize: 22 }}>
@@ -44,7 +44,7 @@ export default function CustomerProfile({ booking, onNext, onBack }) {
           </p>
         </div>
 
-        <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 42, color: '#1e4034' }} className="mb-2">
+        <h1 className="page-title mb-2" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#1e4034' }}>
           Dein Profil
         </h1>
         <p style={{ color: '#6b8f7e', fontSize: 15 }} className="mb-10">

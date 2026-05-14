@@ -4,7 +4,7 @@ export default function Confirmation({ booking, profile, onHome }) {
   })
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ background: '#fdfaf5' }}>
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ background: '#fdfaf5', width: '100%' }}>
       {/* Success Icon */}
       <div style={{
         width: 90, height: 90, borderRadius: '50%',
@@ -47,8 +47,8 @@ export default function Confirmation({ booking, profile, onHome }) {
 
       {/* Studio Info */}
       <div style={{ background: '#f0f7f3', borderRadius: 16, maxWidth: 460, width: '100%' }} className="p-6 mb-10 text-center">
-        <p style={{ color: '#3a7f63', fontSize: 13, marginBottom: 4 }}>📍 Maximilianstr. 12, München</p>
-        <p style={{ color: '#3a7f63', fontSize: 13 }}>📞 +49 89 123 456 78</p>
+        <p style={{ color: '#3a7f63', fontSize: 13, marginBottom: 4 }}>📍 Margaretha-Flesch-Str. 12, 56588 Waldbreitbach</p>
+        <p style={{ color: '#3a7f63', fontSize: 13 }}>📞 +49 176 43625371</p>
       </div>
 
       <button
