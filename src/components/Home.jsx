@@ -33,7 +33,7 @@ const PRODUCTS = [
 ]
 
 const STAFF = [
-  { name: 'Dada', role: 'Inhaberin & Massagetherapeutin', exp: '', spec: '', photo: '/images/team/dada.jpg', photoPosition: '15% center' },
+  { name: 'Dada', role: 'Inhaberin & Massagetherapeutin', exp: '', spec: '', photo: '/images/team/dada.jpg', photoPosition: '0% center' },
 ]
 
 export default function Home({ onBook }) {
@@ -198,7 +198,7 @@ export default function Home({ onBook }) {
               {/* Image */}
               <div style={{ aspectRatio: '4/3', background: p.imageBg, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
                 {p.image ? (
-                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8px' }} />
+                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', transform: 'scale(1.08)', transformOrigin: 'center top' }} />
                 ) : (
                   <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: 64 }}>{p.icon}</span>
