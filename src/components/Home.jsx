@@ -167,9 +167,9 @@ export default function Home({ onBook }) {
           </div>
           {/* Right: massage room + text */}
           <div style={{ flex: '1 1 260px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)', aspectRatio: '4/3' }}>
+            <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 4px 24px rgba(45,100,80,0.10)' }}>
               <img src="/images/studio/massageraum.jpeg" alt="Massageraum"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+                style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
             <div style={{ background: '#f0f7f3', borderRadius: 20, padding: '24px' }}>
               <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 26, color: '#1e4034', lineHeight: 1.3, marginBottom: 10 }}>
