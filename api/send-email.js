@@ -1,7 +1,7 @@
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-const STUDIO_EMAIL = 'tomi.denic@gmail.com' // Dada's email — update when known
+const STUDIO_EMAIL = 'daliborkad73@gmail.com'
 
 function bookingHtml({ name, email, service, date, time, therapist, price, oils, extras, focus, notes }) {
   return `
