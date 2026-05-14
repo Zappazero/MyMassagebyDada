@@ -9,8 +9,6 @@ const SERVICES = [
   { name: 'Fußmassage mit Fußbad', duration: '45 Min', price: '50€' },
 ]
 
-const STAFF = ['Dada', 'Caro', 'Keine Präferenz']
-
 const TIMES = ['09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00']
 
 function getNext14Days() {
@@ -28,12 +26,11 @@ const fmt = (d) => d.toLocaleDateString('de-DE', { weekday: 'short', day: 'numer
 
 export default function Booking({ onNext, onBack }) {
   const [service, setService] = useState('')
-  const [therapist, setTherapist] = useState('')
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
 
   const days = getNext14Days()
-  const valid = service && therapist && date && time
+  const valid = service && date && time
 
   return (
     <div className="min-h-screen" style={{ background: '#fdfaf5', width: '100%' }}>
@@ -75,28 +72,8 @@ export default function Booking({ onNext, onBack }) {
           </div>
         </Section>
 
-        {/* Therapist */}
-        <Section label="2. Therapeutin wählen">
-          <div className="flex flex-wrap gap-3">
-            {STAFF.map(s => (
-              <button
-                key={s}
-                onClick={() => setTherapist(s)}
-                style={{
-                  border: therapist === s ? '2px solid #3a7f63' : '2px solid #e8d5a0',
-                  background: therapist === s ? '#f0f7f3' : '#fff',
-                  borderRadius: 30, padding: '10px 20px', cursor: 'pointer',
-                  color: '#1e4034', fontSize: 15, transition: 'all 0.15s'
-                }}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-        </Section>
-
         {/* Date */}
-        <Section label="3. Datum wählen">
+        <Section label="2. Datum wählen">
           <div className="flex gap-3 overflow-x-auto pb-2">
             {days.map(d => {
               const key = d.toISOString().split('T')[0]
@@ -127,7 +104,7 @@ export default function Booking({ onNext, onBack }) {
         </Section>
 
         {/* Time */}
-        <Section label="4. Uhrzeit wählen">
+        <Section label="3. Uhrzeit wählen">
           <div className="flex flex-wrap gap-3">
             {TIMES.map(t => (
               <button
@@ -148,7 +125,7 @@ export default function Booking({ onNext, onBack }) {
         </Section>
 
         <button
-          onClick={() => valid && onNext({ service, therapist, date, time })}
+          onClick={() => valid && onNext({ service, therapist: 'Dada', date, time })}
           style={{
             background: valid ? '#2d6450' : '#c8ddd6',
             color: '#f2e2c4',
