@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import PayPalCheckout from './PayPalCheckout'
+import PaymentSuccess from './PaymentSuccess'
+
 const SERVICES = [
   { name: 'Atempause', duration: '30 Min', price: '40€', desc: 'Rücken, Nacken & Schultern — für alle, die schnell abschalten und Verspannungen loswerden wollen.' },
   { name: 'Teilkörpermassage', duration: '45 Min', price: '55€', desc: 'Individuell wählbarer Fokus (z. B. Beine, Rücken, Kopf) — wenn gezielte Entlastung im Vordergrund steht.' },
@@ -37,6 +41,12 @@ const STAFF = [
 ]
 
 export default function Home({ onBook }) {
+  const [checkout, setCheckout] = useState(null)
+  const [success, setSuccess] = useState(null)
+
+  const openCheckout = (name, amount) => setCheckout({ name, amount })
+  const handleSuccess = () => { setSuccess(checkout); setCheckout(null) }
+
   return (
     <div className="min-h-screen" style={{ background: '#fdfaf5', width: '100%' }}>
 
@@ -223,12 +233,14 @@ export default function Home({ onBook }) {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
                   <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 32, color: '#1e4034', fontWeight: 300 }}>{p.price}</span>
-                  <button style={{
-                    background: '#2d6450', color: '#f2e2c4',
-                    fontFamily: 'Cormorant Garamond, serif', fontSize: 18, fontStyle: 'italic',
-                    borderRadius: 30, padding: '11px 28px', border: 'none', cursor: 'pointer',
-                    letterSpacing: 0.5
-                  }}>
+                  <button
+                    onClick={() => openCheckout(p.name, parseInt(p.price))}
+                    style={{
+                      background: '#2d6450', color: '#f2e2c4',
+                      fontFamily: 'Cormorant Garamond, serif', fontSize: 18, fontStyle: 'italic',
+                      borderRadius: 30, padding: '11px 28px', border: 'none', cursor: 'pointer',
+                      letterSpacing: 0.5
+                    }}>
                     Bestellen
                   </button>
                 </div>
@@ -255,6 +267,21 @@ export default function Home({ onBook }) {
           ))}
         </div>
       </div>
+
+      {checkout && (
+        <PayPalCheckout
+          amount={checkout.amount}
+          description={checkout.name}
+          onSuccess={handleSuccess}
+          onClose={() => setCheckout(null)}
+        />
+      )}
+      {success && (
+        <PaymentSuccess
+          description={success.name}
+          onClose={() => setSuccess(null)}
+        />
+      )}
 
       {/* Footer */}
       <footer style={{ background: '#2d6450', color: '#a8d5be' }} className="px-6 py-8 text-center text-sm">
