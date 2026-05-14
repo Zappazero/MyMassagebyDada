@@ -196,9 +196,9 @@ export default function Home({ onBook }) {
           {PRODUCTS.map(p => (
             <div key={p.name} style={{ background: '#fff', border: '1px solid #e8d5a0', borderRadius: 20, maxWidth: 380, width: '100%', display: 'flex', flexDirection: 'column' }} className="overflow-hidden shadow-sm hover:shadow-md transition">
               {/* Image */}
-              <div style={{ aspectRatio: '4/3', background: p.imageBg, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+              <div style={{ background: p.imageBg, position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
                 {p.image ? (
-                  <img src={p.image} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', transform: 'scale(1.08)', transformOrigin: 'center top' }} />
+                  <img src={p.image} alt={p.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
                 ) : (
                   <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: 64 }}>{p.icon}</span>
