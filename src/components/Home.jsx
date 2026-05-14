@@ -45,7 +45,20 @@ export default function Home({ onBook }) {
   const [success, setSuccess] = useState(null)
 
   const openCheckout = (name, amount) => setCheckout({ name, amount })
-  const handleSuccess = () => { setSuccess(checkout); setCheckout(null) }
+  const handleSuccess = ({ name: customerName, email: customerEmail }) => {
+    fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'payment',
+        customerEmail,
+        customerName,
+        data: { item: checkout.name, amount: checkout.amount }
+      })
+    }).catch(console.error)
+    setSuccess(checkout)
+    setCheckout(null)
+  }
 
   return (
     <div className="min-h-screen" style={{ background: '#fdfaf5', width: '100%' }}>

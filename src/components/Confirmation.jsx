@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PayPalCheckout from './PayPalCheckout'
 import PaymentSuccess from './PaymentSuccess'
 
@@ -11,6 +11,18 @@ const SERVICE_PRICES = {
   'Fußmassage mit Fußbad': 50,
 }
 
+async function sendEmail(type, customerEmail, customerName, data) {
+  try {
+    await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, customerEmail, customerName, data })
+    })
+  } catch (err) {
+    console.error('Email send failed:', err)
+  }
+}
+
 export default function Confirmation({ booking, profile, onHome }) {
   const [showCheckout, setShowCheckout] = useState(false)
   const [paid, setPaid] = useState(false)
@@ -20,6 +32,29 @@ export default function Confirmation({ booking, profile, onHome }) {
   })
 
   const price = SERVICE_PRICES[booking.service] || 0
+
+  useEffect(() => {
+    sendEmail('booking', profile.email, profile.name, {
+      service: booking.service,
+      date: booking.date,
+      time: booking.time,
+      therapist: booking.therapist,
+      price,
+      oils: profile.oils,
+      extras: profile.extras,
+      focus: profile.focus,
+      notes: profile.notes,
+    })
+  }, [])
+
+  const handlePaymentSuccess = () => {
+    setPaid(true)
+    setShowCheckout(false)
+    sendEmail('payment', profile.email, profile.name, {
+      item: booking.service,
+      amount: price,
+    })
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ background: '#fdfaf5', width: '100%' }}>
@@ -53,7 +88,6 @@ export default function Confirmation({ booking, profile, onHome }) {
         </div>
       </div>
 
-      {/* Payment */}
       {!paid ? (
         <div style={{ maxWidth: 460, width: '100%', marginBottom: 24 }}>
           <button
@@ -99,7 +133,9 @@ export default function Confirmation({ booking, profile, onHome }) {
         <PayPalCheckout
           amount={price}
           description={booking.service}
-          onSuccess={() => { setPaid(true); setShowCheckout(false) }}
+          customerEmail={profile.email}
+          customerName={profile.name}
+          onSuccess={handlePaymentSuccess}
           onClose={() => setShowCheckout(false)}
         />
       )}
