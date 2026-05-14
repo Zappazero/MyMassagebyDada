@@ -33,7 +33,7 @@ const PRODUCTS = [
 ]
 
 const STAFF = [
-  { name: 'Dada', role: 'Inhaberin & Massagetherapeutin', exp: '', spec: '', photo: '/images/team/dada.jpg', photoPosition: '0% center' },
+  { name: 'Dada', role: 'Inhaberin & Massagetherapeutin', exp: '', spec: '', photo: '/images/team/dada.jpg', photoPosition: 'center' },
 ]
 
 export default function Home({ onBook }) {
